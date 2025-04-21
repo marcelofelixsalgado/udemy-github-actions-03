@@ -1,11 +1,15 @@
 name: First Workflow
-on: workflow_dispatch
+on: push
 jobs:
-  first-job:
+  download-artifact:
     runs-on: 	ubuntu-latest
     steps:
     - uses: actions/download-artifact@v4
     - name: Display structure of downloaded files
       run: ls -R
-    - name: Print goodbye
-      run: echo "Done - bye!"
+  run-lint:
+    runs-on: 	ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v4
+    - name: Display structure of downloaded files
+      run: ls -R
