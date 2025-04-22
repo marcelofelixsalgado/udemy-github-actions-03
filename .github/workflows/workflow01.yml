@@ -10,6 +10,7 @@ jobs:
   run-lint:
     runs-on: 	ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v4
-    - name: Display structure of downloaded files
-      run: ls -R
+    - name: Install ESLint
+      run: npm install -D eslint
+    - name: Run ESLint
+      run: npx eslint --ext .jsx --fix src
