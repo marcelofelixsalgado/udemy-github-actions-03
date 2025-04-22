@@ -4,9 +4,7 @@ jobs:
   run-lint:
     runs-on: 	ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v4
-      with:
-        name: my-artifact
+    - uses: actions/checkout@v4
     - name: Install ESLint
       run: npm install -D eslint
     - name: Run ESLint
