@@ -1,14 +1,10 @@
 name: First Workflow
 on: push
 jobs:
-  checkout:
+  run-lint:
     runs-on: 	ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-  run-lint:
-    needs: checkout
-    runs-on: 	ubuntu-latest
-    steps:
     - name: Install ESLint
       run: npm install -D eslint
     - name: Run ESLint
@@ -17,6 +13,7 @@ jobs:
     needs: run-lint
     runs-on: 	ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Install Vite
       run: npm install -D vite
     - name: Run tests
@@ -25,5 +22,6 @@ jobs:
     needs: run-tests
     runs-on: 	ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Build
       run: npx vite build
