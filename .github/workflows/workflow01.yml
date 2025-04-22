@@ -1,16 +1,10 @@
 name: First Workflow
 on: push
 jobs:
-  download-artifact:
+  run-lint:
     runs-on: 	ubuntu-latest
     steps:
     - uses: actions/download-artifact@v4
-    - name: Display structure of downloaded files
-      run: ls -R
-  run-lint:
-    needs: download-artifact
-    runs-on: ubuntu-latest
-    steps:
     - name: Install ESLint
       run: npm install -D eslint
     - name: Run ESLint
